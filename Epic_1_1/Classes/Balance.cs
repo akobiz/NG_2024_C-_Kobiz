@@ -7,7 +7,7 @@ namespace Epic_1_1.Classes
         public int ClientId { get; set; }
         public float BalanceAmount { get; set; }
 
-        public Balance(int balanceId, int clientID, float balanceAmount)
+        public Balance(int balanceId = 0, int clientID = 0, float balanceAmount = 0)
         {
             BalanceId = balanceId;
             ClientId = clientID;
