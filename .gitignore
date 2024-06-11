@@ -1,0 +1,67 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# VS Code directories
+.vscode/
+.history/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.log
+*.tlog
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio working files
+*.ncrunchsolution
+*.ncrunchproject
+*.builds
+*.pidb
+*.svclog
+*.scc
+*.cache
+
+# Visual Studio 2019 directories
+.vs/
+
+# Rider directories
+.idea/
+.idea_modules/
+
+# Auto-generated VS project files
+*.csproj.user
+*.vscode/
+
+# Database files
+*.mdf
+*.ldf
+
+# Entity Framework Core
+_Migrations/
+
+# Azure Functions
+local.settings.json
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Microsoft Azure Web App publish settings
+*.Publish.xml
+
+# Microsoft Azure Web App publish settings
+# PublishProfiles/
