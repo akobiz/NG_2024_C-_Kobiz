@@ -1,0 +1,8 @@
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\bin\Debug\Epic_1_1.exe.config
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\bin\Debug\Epic_1_1.exe
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\bin\Debug\Epic_1_1.pdb
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\obj\Debug\Epic_1_1.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\obj\Debug\Epic_1_1.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\obj\Debug\Epic_1_1.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\obj\Debug\Epic_1_1.exe
+C:\Users\User\Desktop\git\NG_2024_Csharp_Kobiz\Epic_1_1\obj\Debug\Epic_1_1.pdb
