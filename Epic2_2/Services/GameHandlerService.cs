@@ -15,8 +15,9 @@ namespace Epic2_2.Services
             Console.WriteLine("0. Shut down program");
             Console.WriteLine("\nChoose an option to continue: ");
         }
-        private void DisplayFirstMethod(Game game)
+        private void DisplayFirstMethod(IEnumerable<Game> games, int id)
         {
+            var game = GetGameByID(games, id);
             Console.WriteLine($"Game name: {game.Name}");
             Console.WriteLine($"Price: {game.Price} UAH");
             Console.WriteLine($"Category: {game.Category}");
@@ -31,9 +32,9 @@ namespace Epic2_2.Services
                                   $"Category: {game.Category}");
             }
         }
-        private void DisplayThirdMethod(Game game)
+        private void DisplayThirdMethod(IEnumerable<Game> games, int id)
         {
-            foreach (var genre in GetGenresOfGame(game))
+            foreach (var genre in GetGenresOfGame(games, id))
             {
                 Console.WriteLine(genre.Name);
             }
@@ -58,50 +59,50 @@ namespace Epic2_2.Services
         {
             var paginationSize = 5;
             var pages = data.Count() / paginationSize;
-            var userInput = "";
-            for (int i = 0; i <= pages; i++)
+            for (int i = 0; i <= pages;)
             {
                 Console.Clear();
-                Console.WriteLine(i);
-                var pageData = data.Skip(i * paginationSize).Take(paginationSize);
+                var pageData = PaginationGames(data, i, paginationSize);
                 Console.WriteLine($"PAGE {i + 1}");
                 foreach (var page in pageData)
                 {
                     Console.WriteLine($"ID{page.Id}\nGAME NAME: {page.Name}");
                 }
-                Console.WriteLine("press e to open next one page...");
-                userInput = Console.ReadLine();
-                if (userInput == "e")
+                Console.WriteLine("press q - open the previuos page e to open next one page, enter to choose the game by id...");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.E)
                 {
-                    continue;
+                    i += 1;
+                }
+                else if (key.Key == ConsoleKey.Q)
+                {
+                    i += -1;
+                }
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    DisplayFirstMethod(data, SelectGame());
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
                 }
                 else
                 {
-                    DisplayFirstMethod(SelectGame(data, Convert.ToInt32(userInput)));
-                    Console.ReadKey();
+                    Console.WriteLine("Uknown command. Returning to the first page...");
+                    i = 0;
                 }
             }
         }
-        private Game SelectGame(IEnumerable<Game> data, int userInput = 0)
+        private int SelectGame()
         {
-            Game result = null;
-            if (userInput == 0)
-            {
-                Console.WriteLine("Enter id of the game: ");
-                result = GetGameByID(data, Convert.ToInt32(Console.ReadLine()));
-            }
-            else
-            {
-                result = GetGameByID(data, userInput);
-            }
-            return result;
+            Console.WriteLine("Enter id of the game: ");
+            var userInput = Convert.ToInt32(Console.ReadLine());
+            return userInput;
         }
         private void ChooseOption(IEnumerable<Game> data, int option)
         {
             switch (Convert.ToInt32(option))
             {
                 case 1:
-                    DisplayFirstMethod(SelectGame(data));
+                    DisplayFirstMethod(data, SelectGame());
                     break;
                 case 2:
                     Console.WriteLine("Enter low range:");
@@ -111,7 +112,7 @@ namespace Epic2_2.Services
                     DisplaySecondMethod(data, startRange, endRange);
                     break;
                 case 3:
-                    DisplayThirdMethod(SelectGame(data));
+                    DisplayThirdMethod(data, SelectGame());
                     break;
                 case 4:
                     DisplayFourthMethod(data);

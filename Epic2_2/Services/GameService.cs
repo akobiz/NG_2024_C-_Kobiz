@@ -12,9 +12,9 @@ namespace Epic2_2.Services
         {
             return games.Where(x => x.Price >= startRange && x.Price <= endRange).ToList();
         }
-        public List<Genre> GetGenresOfGame(Game games)
+        public List<Genre> GetGenresOfGame(IEnumerable<Game> games, int id)
         {
-            return games.Genres.ToList();
+            return games.FirstOrDefault(x => x.Id == id).Genres.ToList();
         }
         public List<string> GetUniqueGameCategories(IEnumerable<Game> games)
         {
@@ -23,6 +23,10 @@ namespace Epic2_2.Services
         public IEnumerable<Game> FilterGames(IEnumerable<Game> games, string category, List<string> genres)
         {
             return games.Where(x => x.Category == category && x.Genres.Any(y => genres.Contains(y.Name)));
+        }
+        public IEnumerable<Game> PaginationGames(IEnumerable<Game> games, int page, int paginationSize)
+        {
+            return games.Skip(page * paginationSize).Take(paginationSize);
         }
     }
 }
